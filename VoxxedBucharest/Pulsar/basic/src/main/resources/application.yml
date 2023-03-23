@@ -1,0 +1,4 @@
+pulsar:
+  broker:
+    url: <url>
+    topicName: <topicname>
