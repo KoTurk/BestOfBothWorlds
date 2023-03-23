@@ -1,4 +1,5 @@
 pulsar:
   broker:
-    url: <url>
-    topicName: <topicname>
+    url: "pulsar+ssl://<url>:<port>"
+    topicName: "persistent://<tenant>/<namespace>/<topic>"
+    token: "<token>"
