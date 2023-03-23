@@ -1,5 +1,6 @@
 package nl.datastax.pulsar.client.config;
 
+import org.apache.pulsar.client.api.AuthenticationFactory;
 import org.apache.pulsar.client.api.PulsarClient;
 import org.apache.pulsar.client.api.PulsarClientException;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,10 +13,16 @@ public class PulsarConfig {
     @Value("${pulsar.broker.url}")
     private String brokerUrl;
 
+    @Value("${pulsar.broker.token}")
+    private String token;
+
     @Bean
     public PulsarClient pulsarClient() throws PulsarClientException {
         return PulsarClient.builder()
                 .serviceUrl(brokerUrl)
+                .authentication(
+                        AuthenticationFactory.token(token)
+                )
                 .build();
     }
 
