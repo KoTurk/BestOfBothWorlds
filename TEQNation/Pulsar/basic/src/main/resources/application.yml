@@ -1,0 +1,6 @@
+pulsar:
+  broker:
+    url: "pulsar+ssl://<url>:<port>"
+    topicName: "persistent://<tenant>/<namespace>/<topic>"
+    subscription: "<subscription>"
+    token: "<token>"
