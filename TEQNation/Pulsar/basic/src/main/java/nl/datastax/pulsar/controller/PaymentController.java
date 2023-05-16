@@ -1,6 +1,5 @@
 package nl.datastax.pulsar.controller;
 
-import lombok.RequiredArgsConstructor;
 import example.avro.Payment;
 
 import nl.datastax.pulsar.service.producer.PulsarProducer;
@@ -21,7 +20,7 @@ public class PaymentController {
 
     @PostMapping
     public ResponseEntity<String> processPayment(@RequestBody Payment payment) throws PulsarClientException {
-        if(paymentProducer.processPayment(payment)) {
+        if(paymentProducer.process(payment)) {
             return ResponseEntity.ok("Created payment");
         } else {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();

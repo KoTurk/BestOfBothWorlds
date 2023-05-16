@@ -8,8 +8,8 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.6.4</version>
-        <relativePath/>
+        <version>3.0.0</version>
+        <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
     <groupId>nl.datastax.pulsar.function</groupId>
@@ -17,10 +17,9 @@
     <version>1.0.0</version>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>17</java.version>
         <avro.version>1.10.2</avro.version>
         <kafka-streams-avro-serde.version>6.2.0</kafka-streams-avro-serde.version>
-        <pulsar-client.version>2.10.2</pulsar-client.version>
     </properties>
 
     <dependencies>
@@ -42,10 +41,11 @@
         </dependency>
 
         <dependency>
-            <groupId>org.apache.pulsar</groupId>
-            <artifactId>pulsar-client</artifactId>
-            <version>${pulsar-client.version}</version>
+            <groupId>org.springframework.pulsar</groupId>
+            <artifactId>spring-pulsar-spring-boot-starter</artifactId>
+            <version>0.1.0</version>
         </dependency>
+
         <dependency>
             <groupId>org.apache.avro</groupId>
             <artifactId>avro</artifactId>

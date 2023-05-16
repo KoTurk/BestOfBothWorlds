@@ -1,25 +1,19 @@
 package nl.datastax.pulsar.service.producer;
 
 import example.avro.Payment;
-import nl.datastax.pulsar.config.PulsarConfig;
-import org.apache.pulsar.client.api.Producer;
-import org.apache.pulsar.client.api.PulsarClient;
+import lombok.RequiredArgsConstructor;
 import org.apache.pulsar.client.api.PulsarClientException;
-import org.apache.pulsar.client.api.Schema;
-import org.apache.pulsar.common.schema.KeyValue;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
-@Component
+import org.springframework.pulsar.core.PulsarTemplate;
+import org.springframework.stereotype.Service;
+
+@Service
+@RequiredArgsConstructor
 public class PulsarProducer {
-    private final Producer<byte[]> producer;
+    private final PulsarTemplate<String> pulsarTemplate;
 
-    public PulsarProducer(Producer<byte[]> producer) {
-        this.producer = producer;
-    }
-
-    public boolean processPayment(Payment message) throws PulsarClientException {
-        producer.send("hello".getBytes());
+    public boolean process(Payment payment) throws PulsarClientException {
+       this.pulsarTemplate.send("payment");
         return true;
     }
 }

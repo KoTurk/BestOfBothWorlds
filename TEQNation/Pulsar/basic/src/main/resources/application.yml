@@ -1,6 +1,11 @@
-pulsar:
-  broker:
-    url: "pulsar+ssl://<url>:<port>"
-    topicName: "persistent://<tenant>/<namespace>/<topic>"
-    subscription: "<subscription>"
-    token: "<token>"
+# now the configuration is hardcoded, but you can also do it through yml like below
+spring:
+  pulsar:
+    client:
+      service-url: "<service-url>"
+      authentication:
+         token: "<token>"
+
+    producer:
+        topic-name: "persistent://<tenant>/<namespace>/<topic>"
+        producer-name: "<subscription>"
